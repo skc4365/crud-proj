@@ -47,3 +47,21 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// gradle의 task(JavaCompile, Test, Javadoc)이 JVM의 인코딩을 그대로 사용하게됨.
+// UTF-8 인코딩 설정
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {
+    systemProperty "file.encoding", "UTF-8"
+}
+
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+}
+
+
+
+
